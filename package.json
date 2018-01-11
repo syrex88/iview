@@ -32,12 +32,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/syrex88/iview"
+    "url": "https://github.com/brainkit/iview"
   },
   "author": "Aresn",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/syrex88/iview/issues"
+    "url": "https://github.com/brainkit/iview/issues"
   },
   "dependencies": {
     "async-validator": "^1.8.2",
