@@ -1,6 +1,6 @@
 <template>
     <div style="width: 100px;">
-        <Input autocomplete="on" v-model="value1" size="large" placeholder="large size"></Input>
+        <Input autocomplete="on" v-model="value1" size="large" placeholder="large size" label="label"></Input>
         <br>
         <Input v-model="value2" placeholder="default size"></Input>
         <br>

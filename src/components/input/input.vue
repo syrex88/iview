@@ -1,5 +1,6 @@
 <template>
     <div :class="wrapClasses">
+        <label v-if="label !== ''">{{label}}</label>
         <template v-if="type !== 'textarea'">
             <div :class="[prefixCls + '-group-prepend']" v-if="prepend" v-show="slotReady"><slot name="prepend"></slot></div>
             <i class="ivu-icon" :class="['ivu-icon-' + icon, prefixCls + '-icon', prefixCls + '-icon-normal']" v-if="icon" @click="handleIconClick"></i>
@@ -87,6 +88,10 @@
                 type: String,
                 default: ''
             },
+            label: {
+                type: String,
+                default: ''
+            },
             maxlength: {
                 type: Number
             },
@@ -139,6 +144,7 @@
                 prepend: true,
                 append: true,
                 slotReady: false,
+                focused: false,
                 textareaStyles: {}
             };
         },
@@ -153,7 +159,8 @@
                         [`${prefixCls}-group-${this.size}`]: (this.prepend || this.append) && !!this.size,
                         [`${prefixCls}-group-with-prepend`]: this.prepend,
                         [`${prefixCls}-group-with-append`]: this.append,
-                        [`${prefixCls}-hide-icon`]: this.append  // #554
+                        [`${prefixCls}-hide-icon`]: this.append,  // #554
+                        [`${prefixCls}-focused`]: this.focused,
                     }
                 ];
             },
@@ -193,12 +200,14 @@
             },
             handleFocus (event) {
                 this.$emit('on-focus', event);
+                this.focused = true;
             },
             handleBlur (event) {
                 this.$emit('on-blur', event);
                 if (!findComponentUpward(this, ['DatePicker', 'TimePicker', 'Cascader', 'Search'])) {
                     this.dispatch('FormItem', 'on-form-blur', this.currentValue);
                 }
+                this.focused = false;
             },
             handleInput (event) {
                 let value = event.target.value;
