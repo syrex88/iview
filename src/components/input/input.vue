@@ -162,7 +162,7 @@
                         [`${prefixCls}-hide-icon`]: this.append,  // #554
                         [`${prefixCls}-focused`]: this.focused,
                         [`${prefixCls}-disabled`]: this.disabled,
-                        [`${prefixCls}-not-empty`]: (this.value.trim() !== '')
+                        [`${prefixCls}-not-empty`]: (this.value !== '')
                     }
                 ];
             },
