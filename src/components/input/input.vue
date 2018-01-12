@@ -161,6 +161,7 @@
                         [`${prefixCls}-group-with-append`]: this.append,
                         [`${prefixCls}-hide-icon`]: this.append,  // #554
                         [`${prefixCls}-focused`]: this.focused,
+                        [`${prefixCls}-disabled`]: this.disabled,
                         [`${prefixCls}-not-empty`]: (this.value.trim() !== '')
                     }
                 ];
