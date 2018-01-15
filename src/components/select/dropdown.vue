@@ -1,11 +1,16 @@
 <template>
-    <div class="ivu-select-dropdown" :class="className" :style="styles"><slot></slot></div>
+    <div class="ivu-select-dropdown" :class="className" :style="styles">
+        <slot></slot>
+    </div>
 </template>
 <script>
     import Vue from 'vue';
+
     const isServer = Vue.prototype.$isServer;
-    import { getStyle } from '../../utils/assist';
-    const Popper = isServer ? function() {} : require('popper.js');  // eslint-disable-line
+    import {getStyle} from '../../utils/assist';
+
+    const Popper = isServer ? function () {
+    } : require('popper.js');  // eslint-disable-line
 
     export default {
         name: 'Drop',
@@ -14,25 +19,29 @@
                 type: String,
                 default: 'bottom-start'
             },
+            leftOffset: {
+                type: String,
+                default: '-0px'
+            },
             className: {
                 type: String
             }
         },
-        data () {
+        data() {
             return {
                 popper: null,
                 width: ''
             };
         },
         computed: {
-            styles () {
+            styles() {
                 let style = {};
                 // if (this.width) style.width = `${this.width}px`;
                 return style;
             }
         },
         methods: {
-            update () {
+            update() {
                 if (isServer) return;
                 if (this.popper) {
                     this.$nextTick(() => {
@@ -57,7 +66,7 @@
                     this.width = parseInt(getStyle(this.$parent.$el, 'width'));
                 }
             },
-            destroy () {
+            destroy() {
                 if (this.popper) {
                     this.resetTransformOrigin(this.popper);
                     setTimeout(() => {
@@ -71,13 +80,14 @@
                 let placement = popper._popper.getAttribute('x-placement').split('-')[0];
                 let origin = placementMap[placement];
                 popper._popper.style.transformOrigin = `center ${ origin }`;
+                popper._popper.style.left = this.leftOffset;
             }
         },
-        created () {
+        created() {
             this.$on('on-update-popper', this.update);
             this.$on('on-destroy-popper', this.destroy);
         },
-        beforeDestroy () {
+        beforeDestroy() {
             if (this.popper) {
                 this.popper.destroy();
             }
