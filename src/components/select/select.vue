@@ -1,5 +1,6 @@
 <template>
     <div :class="classes" v-clickoutside="handleClose">
+        <label class="floating-label" v-if="floatingLabel !== ''">{{floatingLabel}}</label>
         <div
             :class="selectionCls"
             ref="reference"
@@ -71,6 +72,10 @@
             // 使用时，也得设置 value 才行
             label: {
                 type: [String, Number, Array],
+                default: ''
+            },
+            floatingLabel: {
+                type: String,
                 default: ''
             },
             multiple: {
@@ -171,6 +176,7 @@
                         [`${prefixCls}-disabled`]: this.disabled,
                         [`${prefixCls}-multiple`]: this.multiple,
                         [`${prefixCls}-single`]: !this.multiple,
+                        [`${prefixCls}-selected`]: (this.value !==''),
                         [`${prefixCls}-show-clear`]: this.showCloseIcon,
                         [`${prefixCls}-${this.size}`]: !!this.size
                     }

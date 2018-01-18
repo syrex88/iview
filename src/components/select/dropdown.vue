@@ -19,9 +19,9 @@
                 type: String,
                 default: 'bottom-start'
             },
-            leftOffset: {
+            dropDownLeftOffset: { // todo не работает передача свойства
                 type: String,
-                default: '-0px'
+                default: '0'
             },
             className: {
                 type: String
@@ -36,7 +36,7 @@
         computed: {
             styles() {
                 let style = {};
-                // if (this.width) style.width = `${this.width}px`;
+                if (this.width) style.minWidth = `${this.width + 10}px`; // todo хардкод, сделать автовычисление с поправкой на padding
                 return style;
             }
         },
@@ -46,6 +46,7 @@
                 if (this.popper) {
                     this.$nextTick(() => {
                         this.popper.update();
+                        this.popper._popper.style.left = this.dropDownLeftOffset + 'px'; // todo проверить при ресайзе окна браузера
                     });
                 } else {
                     this.$nextTick(() => {
@@ -80,7 +81,7 @@
                 let placement = popper._popper.getAttribute('x-placement').split('-')[0];
                 let origin = placementMap[placement];
                 popper._popper.style.transformOrigin = `center ${ origin }`;
-                popper._popper.style.left = this.leftOffset;
+                popper._popper.style.left = this.dropDownLeftOffset + 'px';
             }
         },
         created() {

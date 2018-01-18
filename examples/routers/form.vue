@@ -15,7 +15,7 @@
                     <ColorPicker v-model="formValidate.mail"></ColorPicker>
                 </Form-item>
                 <Form-item label-for="select"  label="城市" prop="city">
-                    <Select element-id="select" filterable v-model="formValidate.city" placeholder="请选择所在地">
+                    <Select floating-label="Выберите город" element-id="select" filterable v-model="formValidate.city" placeholder="请选择所在地">
                         <Option value="beijing">北京市</Option>
                         <Option value="shanghai">上海市</Option>
                         <Option value="shenzhen">深圳市</Option>
