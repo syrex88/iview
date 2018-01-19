@@ -4,7 +4,8 @@
     </div>
 </template>
 <script>
-    import { findComponentUpward } from '../../utils/assist';
+    import {findComponentUpward} from '../../utils/assist';
+
     const prefixCls = 'ivu-col';
 
     export default {
@@ -21,13 +22,13 @@
             md: [Number, Object],
             lg: [Number, Object]
         },
-        data () {
+        data() {
             return {
                 gutter: 0
             };
         },
         computed: {
-            classes () {
+            classes() {
                 let classList = [
                     `${prefixCls}`,
                     {
@@ -57,30 +58,30 @@
 
                 return classList;
             },
-            styles () {
+            styles() {
                 let style = {};
-                if (this.gutter !== 0) {
-                    style = {
-                        paddingLeft: this.gutter / 2 + 'px',
-                        paddingRight: this.gutter / 2 + 'px'
-                    };
-                }
+                // if (this.gutter !== 0) { // todo логичнее сделать проверку на то что если gutter установлен, а не на 0
+                style = {
+                    paddingLeft: this.gutter / 2 + 'px',
+                    paddingRight: this.gutter / 2 + 'px'
+                };
+                // }
 
                 return style;
             }
         },
         methods: {
-            updateGutter () {
+            updateGutter() {
                 const Row = findComponentUpward(this, 'Row');
                 if (Row) {
                     Row.updateGutter(Row.gutter);
                 }
             }
         },
-        mounted () {
+        mounted() {
             this.updateGutter();
         },
-        beforeDestroy () {
+        beforeDestroy() {
             this.updateGutter();
         }
     };

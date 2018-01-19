@@ -4,7 +4,7 @@
     </div>
 </template>
 <script>
-    import { oneOf, findComponentsDownward } from '../../utils/assist';
+    import {oneOf, findComponentsDownward} from '../../utils/assist';
 
     const prefixCls = 'ivu-row';
 
@@ -12,17 +12,17 @@
         name: 'Row',
         props: {
             type: {
-                validator (value) {
+                validator(value) {
                     return oneOf(value, ['flex']);
                 }
             },
             align: {
-                validator (value) {
+                validator(value) {
                     return oneOf(value, ['top', 'middle', 'bottom']);
                 }
             },
             justify: {
-                validator (value) {
+                validator(value) {
                     return oneOf(value, ['start', 'end', 'center', 'space-around', 'space-between']);
                 }
             },
@@ -33,7 +33,7 @@
             className: String
         },
         computed: {
-            classes () {
+            classes() {
                 return [
                     {
                         [`${prefixCls}`]: !this.type,
@@ -44,20 +44,20 @@
                     }
                 ];
             },
-            styles () {
+            styles() {
                 let style = {};
-                if (this.gutter !== 0) {
-                    style = {
-                        marginLeft: this.gutter / -2 + 'px',
-                        marginRight: this.gutter / -2 + 'px'
-                    };
-                }
+                // if (this.gutter !== 0) {
+                style = {
+                    marginLeft: this.gutter / -2 + 'px',
+                    marginRight: this.gutter / -2 + 'px'
+                };
+                //}
 
                 return style;
             }
         },
         methods: {
-            updateGutter (val) {
+            updateGutter(val) {
                 const Cols = findComponentsDownward(this, 'iCol');
                 if (Cols.length) {
                     Cols.forEach((child) => {
@@ -69,7 +69,7 @@
             }
         },
         watch: {
-            gutter (val) {
+            gutter(val) {
                 this.updateGutter(val);
             }
         }
