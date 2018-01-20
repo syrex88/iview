@@ -17,14 +17,12 @@
 </template>
 <script>
     export default {
-        data () {
+        data() {
             return {
                 value1: '',
                 value2: '',
                 value3: '',
-                obj: {
-
-                }
+                obj: {}
             }
         }
     }

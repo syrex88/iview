@@ -46,12 +46,12 @@
             },
             styles() {
                 let style = {};
-                // if (this.gutter !== 0) {
-                style = {
-                    marginLeft: this.gutter / -2 + 'px',
-                    marginRight: this.gutter / -2 + 'px'
-                };
-                //}
+                if (this.gutter !== 0) {
+                    style = {
+                        marginLeft: this.gutter / -2 + 'px',
+                        marginRight: this.gutter / -2 + 'px'
+                    };
+                }
 
                 return style;
             }

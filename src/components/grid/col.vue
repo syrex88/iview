@@ -60,12 +60,12 @@
             },
             styles() {
                 let style = {};
-                // if (this.gutter !== 0) { // todo логичнее сделать проверку на то что если gutter установлен, а не на 0
-                style = {
-                    paddingLeft: this.gutter / 2 + 'px',
-                    paddingRight: this.gutter / 2 + 'px'
-                };
-                // }
+                if (this.gutter !== 0) { // todo логичнее сделать проверку на то что если gutter установлен, а не на 0
+                    style = {
+                        paddingLeft: this.gutter / 2 + 'px',
+                        paddingRight: this.gutter / 2 + 'px'
+                    };
+                }
 
                 return style;
             }

@@ -56,6 +56,7 @@
             @blur="handleBlur"
             @input="handleInput">
         </textarea>
+        <span v-if="valueTip !== ''">{{valueTip}}</span>
     </div>
 </template>
 <script>
@@ -77,6 +78,10 @@
             },
             value: {
                 type: [String, Number],
+                default: ''
+            },
+            valueTip: {
+                type: [String],
                 default: ''
             },
             size: {
