@@ -2,7 +2,7 @@
     <div style="width: 100px;">
         <Input autocomplete="on" v-model="value1" size="large" placeholder="large size" label="label"></Input>
         <br>
-        <Input v-model="value2" placeholder="default size"></Input>
+        <Input v-model="value2" value-tip="P" placeholder="default size"></Input>
         <br>
         <Input v-model="value3" size="small" placeholder="small size"></Input>
         <br>

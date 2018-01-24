@@ -56,7 +56,7 @@
             @blur="handleBlur"
             @input="handleInput">
         </textarea>
-        <span v-if="valueTip !== ''">{{valueTip}}</span>
+        <span :class="prefixCls + '-value-tip'" v-if="valueTip !== ''">{{valueTip}}</span>
     </div>
 </template>
 <script>
@@ -77,6 +77,10 @@
                 default: 'text'
             },
             value: {
+                type: [String, Number],
+                default: ''
+            },
+            valueAutoFilled: {
                 type: [String, Number],
                 default: ''
             },
@@ -167,7 +171,9 @@
                         [`${prefixCls}-hide-icon`]: this.append,  // #554
                         [`${prefixCls}-focused`]: this.focused,
                         [`${prefixCls}-disabled`]: this.disabled,
-                        [`${prefixCls}-not-empty`]: (this.value !== '')
+                        [`${prefixCls}-not-empty`]: (this.value !== ''),
+                        [`${prefixCls}-with-value-tip`]: (this.valueTip !== ''),
+                        [`${prefixCls}-auto-filled`]: (this.valueAutoFilled !== '' && this.valueAutoFilled === this.value),
                     }
                 ];
             },
