@@ -69,6 +69,10 @@
                 type: [String, Number, Array],
                 default: ''
             },
+            valueAutoFilled: {
+                type: [String, Number, Array],
+                default: ''
+            },
             // 使用时，也得设置 value 才行
             label: {
                 type: [String, Number, Array],
@@ -178,7 +182,8 @@
                         [`${prefixCls}-single`]: !this.multiple,
                         [`${prefixCls}-selected`]: (this.value !==''),
                         [`${prefixCls}-show-clear`]: this.showCloseIcon,
-                        [`${prefixCls}-${this.size}`]: !!this.size
+                        [`${prefixCls}-${this.size}`]: !!this.size,
+                        [`${prefixCls}-auto-filled`]: (this.valueAutoFilled !== '' && this.valueAutoFilled === this.value)
                     }
                 ];
             },
