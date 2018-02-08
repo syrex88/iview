@@ -7,6 +7,7 @@
                     :class="[prefixCls + '-editor']"
                     :readonly="!editable || readonly"
                     :disabled="disabled"
+                    :label="floatingLabel"
                     :size="size"
                     :placeholder="placeholder"
                     :value="visualValue"
@@ -185,6 +186,10 @@
                 }
             },
             placeholder: {
+                type: String,
+                default: ''
+            },
+            floatingLabel: {
                 type: String,
                 default: ''
             },
