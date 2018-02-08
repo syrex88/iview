@@ -8,6 +8,7 @@
                     :readonly="!editable || readonly"
                     :disabled="disabled"
                     :label="floatingLabel"
+                    :value-auto-filled="valueAutoFilled"
                     :size="size"
                     :placeholder="placeholder"
                     :value="visualValue"
@@ -191,6 +192,10 @@
             },
             floatingLabel: {
                 type: String,
+                default: ''
+            },
+            valueAutoFilled: {
+                type: [String, Number, Array],
                 default: ''
             },
             placement: {
